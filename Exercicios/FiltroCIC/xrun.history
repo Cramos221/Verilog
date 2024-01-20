@@ -1,0 +1,2 @@
+s1(19Jan2024:22:08:04):  xrun -sv CIC.sv 
+s2(19Jan2024:22:08:06):  xrun -sv CIC.sv CIC_tb.sv 

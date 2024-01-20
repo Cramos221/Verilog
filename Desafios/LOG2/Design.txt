@@ -1,0 +1,8 @@
+module log2(input logic [7:0] value,output logic [7:0] log  );
+  
+  
+  assign log = $clog2(value);
+
+
+  
+endmodule

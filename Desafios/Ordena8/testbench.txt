@@ -1,0 +1,32 @@
+module ordena4_tb();
+  
+  logic [7:0]a,b,c,d,e, f, g, h, num1, num2, num3,num4,num5, num6, num7, num8;
+  logic [7:0]v1,v2,v3,v4,v5,v6,v7,v8;
+  
+  ordena4 inst1(a,b,c,d,v1,v2,v3,v4);
+  ordena4 inst2(e, f, g, h,v5,v6,v7,v8);
+  ordena4 inst3(v1,v2,v5,v6,num1,num2,num3,num4);
+  ordena4 inst4(v3,v4,v7,v8,num5,num6,num7,num8);
+  
+  initial begin
+    $display("Vamos ordenar 8 numeros ");
+    $monitor("a=%b, b=%b, c=%b, d=%b, e=%b, f=%b, g=%b, h=%b \n em ordem crescente num1=%b, num2=%b, num3=%b, num4=%b,num5=%b, num6=%b, num7=%b, num8=%b,",a, b, c, d, e, f, g, h, num1, num2, num3, num4, num5, num6, num7, num8);
+    $dumpfile("dump.vcd");
+    $dumpvars(0, ordena4_tb);
+    
+  end
+  
+ 
+  initial begin
+    a=$urandom();
+    b=$urandom();
+    c=$urandom();
+    d=$urandom();
+    e=$urandom();
+    f=$urandom();
+    g=$urandom();
+    h=$urandom();
+   
+  end
+  
+endmodule

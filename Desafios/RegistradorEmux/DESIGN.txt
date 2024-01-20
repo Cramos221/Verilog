@@ -1,0 +1,40 @@
+module registrador(
+input [7:0]entrada,
+input clk,we3,
+  input[3:0]sel,                   
+  output reg [7:0]saidareg0, saidareg1, saidareg2, saidareg3, saidareg4, saidareg5, saidareg6, saidareg7 ); 
+  
+  
+  always@(posedge clk) begin
+    if(we3)
+      case(sel)
+        4'b0000:saidareg0[7:0]<=8'b00000000;
+        4'b0001:saidareg1[7:0]<=entrada[7:0];
+        4'b0010:saidareg2[7:0]<=entrada[7:0];
+        4'b0011:saidareg3[7:0]<=entrada[7:0];
+        4'b0100:saidareg4[7:0]<=entrada[7:0];
+        4'b0101:saidareg5[7:0]<=entrada[7:0];
+        4'b0110:saidareg6[7:0]<=entrada[7:0];
+        4'b0111:saidareg7[7:0]<=entrada[7:0];
+     
+      endcase       
+  end 
+  
+endmodule
+module mux2(input [2:0]ra1,
+            input [7:0]entrada0,entrada1,entrada2,entrada3,entrada4,entrada5,entrada6,entrada7,
+            output reg [7:0]rd1);
+  
+  always@(*) begin
+    case(ra1)
+      3'b000: rd1[7:0]<=entrada0[7:0];
+      3'b001: rd1[7:0]<=entrada1[7:0];
+      3'b010: rd1[7:0]<=entrada2[7:0];
+      3'b011: rd1[7:0]<=entrada3[7:0];
+      3'b100: rd1[7:0]<=entrada4[7:0];
+      3'b101: rd1[7:0]<=entrada5[7:0];
+      3'b110: rd1[7:0]<=entrada6[7:0];
+      3'b111: rd1[7:0]<=entrada7[7:0];
+    endcase
+  end
+endmodule

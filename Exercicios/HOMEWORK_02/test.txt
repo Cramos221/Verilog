@@ -1,0 +1,53 @@
+module DoublePrecisionFloatingPointAdder_TB;
+
+   logic [63:0] input_a;
+   logic [63:0] input_b;
+   logic [63:0] result;
+
+  // Instanciar o somador de ponto flutuante
+  DoublePrecisionFloatingPointAdder UUT (
+    .input_a(input_a),
+    .input_b(input_b),
+    .result(result)
+  );
+
+ 
+
+  // Teste de exemplo
+  initial begin
+    
+    $monitor("Resultado (em IEEE 754) para ciclo %0d, resultado %h", $time, result);
+  end
+  initial begin
+
+
+
+  #20
+  
+      // Altera as entradas a cada 20ns
+      input_a = 64'h4000000000000000 ;
+      input_b = 64'h3FF0000000000000 ;
+  #20
+      input_a = 64'h4014F100B40A272E ;
+      input_b = 64'h3FF0000000000c00 ;
+  #20
+      input_a = 64'h400000c000000000 ;
+      input_b = 64'h3FF0000000000c00 ;
+  #20
+      input_a = 64'h400000c000000000 ;
+      input_b = 64'h3FF0000000000c00 ;
+  #20
+      input_a <= 64'h400000c000000000 ;
+      input_b <= 64'h3FF0000000000c00 ;
+
+  
+
+
+  
+
+
+    end
+
+    
+ 
+endmodule

@@ -1,0 +1,50 @@
+module registrador_tb();
+  logic clk,we3;
+  logic [3:0]sel;
+  logic [7:0]entrada,saidareg0, saidareg1, saidareg2, saidareg3, saidareg4, saidareg5, saidareg6, saidareg7;
+  
+  registrador reg1(entrada, clk, we3,sel, saidareg0, saidareg1, saidareg2, saidareg3, saidareg4, saidareg5, saidareg6, saidareg7);
+
+  
+  
+  initial 
+    begin
+    $display("testar registrador");
+      $monitor("time=%0d,entrada=%b,  clk=%b, we3=%b, sel=%b, saidareg0=%b, saidareg1=%b, saidareg2=%b, saidareg3=%b, saidareg4=%b, saidareg5=%b, saidareg6=%b, saidareg7=%b",$time,entrada, clk, we3,sel, saidareg0, saidareg1, saidareg2, saidareg3, saidareg4, saidareg5, saidareg6, saidareg7); 
+  
+  end
+  initial begin clk = 1'b0; repeat(10) #3 clk= ~clk;end
+  initial
+    begin
+      entrada=$urandom();
+      we3=1'b1;
+      sel=4'b0000;
+      
+      #3
+      entrada=$urandom();
+      sel=4'b0001;
+      #3
+      entrada=$urandom();
+      
+      #3
+    entrada=$urandom();
+      sel=4'b0100;
+      
+     #3
+      entrada=$urandom();
+     
+      
+      #3
+      entrada=$urandom();
+      
+      #3
+      entrada=$urandom();
+      
+      #3
+    entrada=$urandom();
+     
+    
+    end
+  
+  
+endmodule

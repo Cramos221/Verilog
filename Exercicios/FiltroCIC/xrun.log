@@ -1,0 +1,41 @@
+xrun(64): 23.09-s003: (c) Copyright 1995-2023 Cadence Design Systems, Inc.
+TOOL:	xrun(64)	23.09-s003: Started on Jan 19, 2024 at 22:08:06 -03
+xrun
+	-sv
+	CIC.sv
+	CIC_tb.sv
+file: CIC.sv
+	module worklib.CIC:sv
+		errors: 0, warnings: 0
+file: CIC_tb.sv
+	module worklib.CIC_tb:sv
+		errors: 0, warnings: 0
+		Caching library 'worklib' ....... Done
+	Elaborating the design hierarchy:
+	Top level design units:
+		CIC_tb
+	Building instance overlay tables: .................... Done
+	Generating native compiled code:
+		worklib.CIC:sv <0x570b9829>
+			streams:  11, words:  5100
+		worklib.CIC_tb:sv <0x013f4071>
+			streams:  11, words:  7095
+	Building instance specific data structures.
+	Loading native compiled code:     .................... Done
+	Design hierarchy summary:
+		                 Instances  Unique
+		Modules:                 2       2
+		Registers:              30      30
+		Scalar wires:            4       -
+		Vectored wires:          4       -
+		Always blocks:           4       4
+		Initial blocks:          2       2
+		Pseudo assignments:      3       -
+		Process Clocks:          3       3
+		Simulation timescale:  1ns
+	Writing initial simulation snapshot: worklib.CIC_tb:sv
+Loading snapshot worklib.CIC_tb:sv .................... Done
+xcelium> source /Tools/cadence/XCELIUM2309/tools/xcelium/files/xmsimrc
+xcelium> run
+Simxmsim: *W,NCTERM: Simulation received SIGTERM signal from process 246888, user id 10TOOL:	xrun(64)	23.09-s003: Exiting on Jan 19, 2024 at 22:10:50 -03  (total: 00:02:44)
+ 00:04:45)

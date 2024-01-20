@@ -1,0 +1,43 @@
+package FloatingPointPackage;
+  
+  typedef logic [31:0] IEEE754Single; // Tipo para números de ponto flutuante IEEE 754 de precisão simples
+endpackage
+
+module FloatingPointAdder #(parameter MANTISSA_SIZE = 23, parameter EXPONENT_SIZE = 8)(
+  input  FloatingPointPackage::IEEE754Single input_a,
+  input  FloatingPointPackage::IEEE754Single input_b,
+  output  FloatingPointPackage::IEEE754Single result
+);
+
+  logic [0:0] sign_a, sign_b, sign_result;
+  logic [EXPONENT_SIZE-1:0] exp_a, exp_b, exp_result;
+  logic [MANTISSA_SIZE-1:0] mant_a, mant_b, mant_result;
+
+  always @* begin
+    // Separe sinal, expoente e mantissa
+    sign_a = input_a[31];
+    sign_b = input_b[31];
+    exp_a = input_a[30:23];
+    exp_b = input_b[30:23];
+    mant_a = input_a[22:0];
+    mant_b = input_b[22:0];
+
+    // Adicione as mantissas
+    mant_result = (sign_a == sign_b) ? mant_a + mant_b : mant_a - mant_b;
+
+    // Determine o expoente para o resultado
+    exp_result = (exp_a > exp_b) ? exp_a : exp_b;
+
+    // Arredonde para zero (truncamento)
+    if (exp_a != exp_b) begin
+      if (exp_a > exp_b)
+        mant_result = mant_result >> (exp_a - exp_b);
+      else
+        mant_result = mant_result >> (exp_b - exp_a);
+    end
+
+    // Recomponha sinal, expoente e mantissa para formar o resultado
+    sign_result = sign_a;
+    result = {sign_result, exp_result, mant_result};
+  end
+endmodule
