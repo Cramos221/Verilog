@@ -1,7 +1,5 @@
 //CORDIC implementation for sine and cosine for Final Project 
 
-//Claire Barnes
-
 module CORDIC(clock, cosine, sine, x_start, y_start, angle);
 
   parameter width = 16;
