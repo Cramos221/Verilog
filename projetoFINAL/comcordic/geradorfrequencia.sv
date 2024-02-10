@@ -7,7 +7,7 @@ module geradorfrequencia #(int WIDTH=8)(data,clk,rst,out,enable);
  
   logic [WIDTH:0]acumulador;
   
-  always_ff @(posedge clk or negedge rst) begin
+  always_ff @(posedge clk) begin
     if(!rst)begin 
     acumulador <= 0;
     end
