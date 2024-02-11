@@ -16,14 +16,14 @@ module waveform #(int WIDTH = 16, int WAVE_WIDTH = 16, int CNT_WIDTH =16 )(wave_
   	
   // Frequency generator
   
-  geradorfrequencia #(.WIDTH(WIDTH)) clk_gen(.data(freq_in),.clk(clk),.rst(rst_in),.out(clk_o),.enable(enable));
+  gerador_de_frequencias_arbitrarias #(.WIDTH(WIDTH)) clk_gen(.data(freq_in),.clk(clk),.rst(rst_in),.out(clk_o),.enable(enable));
   
   // The counter 
   
   logic [CNT_WIDTH-1:0]counter;
   
   always @(clk_o)begin
-    if(!rst_in)begin
+    if(~rst_in)begin
       counter <= 0;
     end else begin 
       counter <= counter + 1;
